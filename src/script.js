@@ -73,13 +73,21 @@ formSearchBtn.addEventListener("click", search);
 
 function showCurrentTempreture(response) {
   document.querySelector(".city-name").innerHTML = response.data.name;
-  let tempreture = Math.round(response.data.main.temp);
-  document.querySelector(".degree").innerHTML = tempreture;
+  celsuisTemp = response.data.main.temp;
+
+  document.querySelector(".degree").innerHTML = Math.round(celsuisTemp);
   document.querySelector(".humidity").innerHTML = response.data.main.humidity;
   document.querySelector(".wind").innerHTML = response.data.wind.speed;
   document.querySelector(".pressure").innerHTML = response.data.main.pressure;
   document.querySelector(".current-weather-status").innerHTML =
     response.data.weather[0].description;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function getPosition(position) {
@@ -99,5 +107,30 @@ function showCurrentCityInfo(event) {
 
 let formLocationBtn = document.querySelector("#current-location");
 formLocationBtn.addEventListener("click", showCurrentCityInfo);
+
+let celsuisTemp = null;
+
+function showCelsiusDeg(event) {
+  event.preventDefault();
+  document.querySelector("#deg-celsius").classList.add("active");
+  document.querySelector("#deg-fahrenheit").classList.remove("active");
+  let currentDeg = document.querySelector(".degree");
+  currentDeg.innerHTML = Math.round(celsuisTemp);
+}
+
+let celsuisDeg = document.querySelector("#deg-celsius");
+celsuisDeg.addEventListener("click", showCelsiusDeg);
+
+function showFahrenheitDeg(event) {
+  event.preventDefault();
+  let fahrenheitTemp = Math.round((celsuisTemp * 9) / 5 + 32);
+  let currentDeg = document.querySelector(".degree");
+  document.querySelector("#deg-celsius").classList.remove("active");
+  document.querySelector("#deg-fahrenheit").classList.add("active");
+  currentDeg.innerHTML = fahrenheitTemp;
+}
+
+let fahrenheitDeg = document.querySelector("#deg-fahrenheit");
+fahrenheitDeg.addEventListener("click", showFahrenheitDeg);
 
 searchCity("Montreal");

@@ -130,8 +130,8 @@ body {
 .degree,
 .temps,
 .city-name,
-#deg-cels,
-#deg-fah {
+#deg-celsius,
+#deg-fahrenheit {
   font-family: "Fredericka the Great", cursive;
 }
 
@@ -139,12 +139,25 @@ body {
   margin: 35px auto 0;
 }
 
-.current-temp {
+.current-tempreture {
   margin-left: 35px;
 }
 
+.deg-celsius,
+.deg-fahrenheit {
+  font-size: 26px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.current-tempreture .active {
+  color: #fff;
+  font-size: 38px;
+  cursor: default;
+}
+
 .current-weather-img {
-  width: 220px;
+  width: 200px;
   margin-left: -50px;
 }
 
@@ -153,14 +166,8 @@ body {
   color: #fff;
 }
 
-#deg-cels,
-#deg-fah {
-  font-size: 25px;
-  text-decoration: none;
-  font-weight: bold;
-}
-#deg-cels:hover,
-#deg-fah:hover {
+#deg-celsius:hover,
+#deg-fahrenheit:hover {
   color: #ffa500;
 }
 

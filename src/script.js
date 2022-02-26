@@ -52,6 +52,12 @@ time.innerHTML = `${hours}:${minutes} ${ampm}`;
 let currentDate = document.querySelector(".date");
 currentDate.innerHTML = `${dayOfMonth} ${month} ${year}`;
 
+function formatDay(timestemp) {
+  let date = new Date(timestemp * 1000);
+  let day = date.getDay();
+  return days[day].substring(0, 3);
+}
+
 //////       Search Button  /////////////////////////
 
 function searchCity(city) {
@@ -72,32 +78,34 @@ formSearchBtn.addEventListener("click", search);
 //////       Forecast       /////////////////////////////
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue", "wed", "Thu"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` 
+  for (let index = 1; index < forecast.length; index++) {
+    if (index < 7) {
+      forecastHTML =
+        forecastHTML +
+        ` 
               <div class="col-2 col-2-edit">
                 <div class="weather-forecast-days">
-                  ${day}
+                  ${formatDay(forecast[index].dt)}
                 </div>
-                <img src="images/rainy-7.svg" alt="sunny" class="days-img" />
+                <img src="http://openweathermap.org/img/wn/${
+                  forecast[index].weather[0].icon
+                }@2x.png" alt="sunny" class="days-img" />
                 <div class="weather-forecast-temps">
                   <span class="weather-forecast-temps-max ">
-                    -17
+                    ${Math.round(forecast[index].temp.max)}°
                   </span>
                   |
                   <span class="weather-forecast-temps-min ">
-                    -17
+                    ${Math.round(forecast[index].temp.min)}°
                   </span>
                 </div>
                 </div>
            `;
-  });
+    }
+  }
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;

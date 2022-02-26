@@ -52,7 +52,7 @@ time.innerHTML = `${hours}:${minutes} ${ampm}`;
 let currentDate = document.querySelector(".date");
 currentDate.innerHTML = `${dayOfMonth} ${month} ${year}`;
 
-////// Search Button  /////////////////////////
+//////       Search Button  /////////////////////////
 
 function searchCity(city) {
   let apiKey = "88ce603b3361b10f232b41d49c2e52e3";
@@ -69,7 +69,40 @@ function search(event) {
 let formSearchBtn = document.querySelector("#city-input");
 formSearchBtn.addEventListener("click", search);
 
-////// Location Button /////////////////////////////
+//////       Forecast       /////////////////////////////
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "wed", "Thu"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` 
+              <div class="col-2 col-2-edit">
+                <div class="weather-forecast-days">
+                  ${day}
+                </div>
+                <img src="images/rainy-7.svg" alt="sunny" class="days-img" />
+                <div class="weather-forecast-temps">
+                  <span class="weather-forecast-temps-max ">
+                    -17
+                  </span>
+                  |
+                  <span class="weather-forecast-temps-min ">
+                    -17
+                  </span>
+                </div>
+                </div>
+           `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+//////        Location Button /////////////////////////////
 
 function showCurrentTempreture(response) {
   document.querySelector(".city-name").innerHTML = response.data.name;
@@ -134,3 +167,4 @@ let fahrenheitDeg = document.querySelector("#deg-fahrenheit");
 fahrenheitDeg.addEventListener("click", showFahrenheitDeg);
 
 searchCity("Montreal");
+displayForecast();

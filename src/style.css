@@ -149,10 +149,6 @@ body {
   text-transform: capitalize;
 }
 
-.feels-like {
-  margin-left: 10%;
-}
-
 .current-weather-status {
   font-size: 20px;
 }
@@ -170,15 +166,15 @@ body {
 
 .deg-celsius {
   bottom: 100px;
-  left: 90px;
+  left: 60px;
 }
 .devider {
   bottom: 108px;
-  left: 120px;
+  left: 90px;
 }
 .deg-fahrenheit {
   bottom: 104px;
-  left: 130px;
+  left: 100px;
 }
 
 .current-tempreture .active {
@@ -203,7 +199,6 @@ body {
 }
 
 .degree {
-  margin-left: 15%;
   font-size: 54px;
   color: var(--white);
 }

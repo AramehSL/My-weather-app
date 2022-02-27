@@ -79,6 +79,7 @@ formSearchBtn.addEventListener("click", search);
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   for (let i = 1; i < forecast.length; i++) {
@@ -94,11 +95,11 @@ function displayForecast(response) {
                   forecast[i].weather[0].icon
                 }@2x.png" alt="sunny" class="days-img" />
                 <div class="weather-forecast-temps">
-                  <span class="weather-forecast-temps-max ">
+                  <span class="weather-forecast-temps-max" id="weather-forecast-temps-max-${i}">
                     ${Math.round(forecast[i].temp.max)}°
                   </span>
                   |
-                  <span class="weather-forecast-temps-min ">
+                  <span class="weather-forecast-temps-min" id="weather-forecast-temps-min-${i}">
                     ${Math.round(forecast[i].temp.min)}°
                   </span>
                 </div>
@@ -122,13 +123,12 @@ function getForecast(coordinates) {
 //////        Location Button /////////////////////////////
 
 function showCurrentTempreture(response) {
-  console.log(response.data);
   document.querySelector(".city-name").innerHTML = response.data.name;
   celsuisTemp = response.data.main.temp;
+  celsuisFeelsLike = response.data.main.feels_like;
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.main.feels_like
   );
-
   document.querySelector(".degree").innerHTML = Math.round(celsuisTemp);
   document.querySelector(".humidity").innerHTML = response.data.main.humidity;
   document.querySelector(".wind").innerHTML = response.data.wind.speed;
@@ -165,6 +165,7 @@ let formLocationBtn = document.querySelector("#current-location");
 formLocationBtn.addEventListener("click", showCurrentCityInfo);
 
 let celsuisTemp = null;
+let celsuisFeelsLike = null;
 
 function showCelsiusDeg(event) {
   event.preventDefault();
@@ -172,6 +173,9 @@ function showCelsiusDeg(event) {
   document.querySelector("#deg-fahrenheit").classList.remove("active");
   let currentDeg = document.querySelector(".degree");
   currentDeg.innerHTML = Math.round(celsuisTemp);
+  document.querySelector("#feels-like").innerHTML =
+    Math.round(celsuisFeelsLike);
+  document.querySelector(".feels-like-deg").innerHTML = "°C";
 }
 
 let celsuisDeg = document.querySelector("#deg-celsius");
@@ -184,6 +188,11 @@ function showFahrenheitDeg(event) {
   document.querySelector("#deg-celsius").classList.remove("active");
   document.querySelector("#deg-fahrenheit").classList.add("active");
   currentDeg.innerHTML = fahrenheitTemp;
+  document.querySelector("#feels-like").innerHTML = Math.round(
+    (celsuisFeelsLike * 9) / 5 + 32
+  );
+
+  document.querySelector(".feels-like-deg").innerHTML = "°F";
 }
 
 let fahrenheitDeg = document.querySelector("#deg-fahrenheit");

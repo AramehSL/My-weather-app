@@ -81,25 +81,25 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  for (let index = 1; index < forecast.length; index++) {
-    if (index < 7) {
+  for (let i = 1; i < forecast.length; i++) {
+    if (i < 7) {
       forecastHTML =
         forecastHTML +
         ` 
               <div class="col-2 col-2-edit">
                 <div class="weather-forecast-days">
-                  ${formatDay(forecast[index].dt)}
+                  ${formatDay(forecast[i].dt)}
                 </div>
                 <img src="http://openweathermap.org/img/wn/${
-                  forecast[index].weather[0].icon
+                  forecast[i].weather[0].icon
                 }@2x.png" alt="sunny" class="days-img" />
                 <div class="weather-forecast-temps">
                   <span class="weather-forecast-temps-max ">
-                    ${Math.round(forecast[index].temp.max)}°
+                    ${Math.round(forecast[i].temp.max)}°
                   </span>
                   |
                   <span class="weather-forecast-temps-min ">
-                    ${Math.round(forecast[index].temp.min)}°
+                    ${Math.round(forecast[i].temp.min)}°
                   </span>
                 </div>
                 </div>
@@ -122,8 +122,12 @@ function getForecast(coordinates) {
 //////        Location Button /////////////////////////////
 
 function showCurrentTempreture(response) {
+  console.log(response.data);
   document.querySelector(".city-name").innerHTML = response.data.name;
   celsuisTemp = response.data.main.temp;
+  document.querySelector("#feels-like").innerHTML = Math.round(
+    response.data.main.feels_like
+  );
 
   document.querySelector(".degree").innerHTML = Math.round(celsuisTemp);
   document.querySelector(".humidity").innerHTML = response.data.main.humidity;

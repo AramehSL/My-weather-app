@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fredericka+the+Great&family=Pattaya&family=Roboto:wght@300&family=Stardos+Stencil&display=swap");
 
+:root {
+  --main-color: #494949;
+  --white: #fff;
+}
+
 body {
   height: 100vh;
   background: linear-gradient(-45deg, #cf6747, #aa6680, #1c8ab3, #23d5ab);
@@ -33,7 +38,6 @@ body {
 
 .city-name {
   display: block;
-  font-family: "Fredericka the Great", cursive;
   padding: 10px 15px 0;
   font-size: 50px;
   background: #f5f7f8;
@@ -88,7 +92,7 @@ body {
 
 .search-btn:hover,
 #current-location:hover {
-  color: #fff;
+  color: var(--white);
   background-color: rgba(207, 204, 204, 0.685);
 }
 
@@ -98,7 +102,7 @@ body {
 }
 
 .location {
-  color: #fff;
+  color: var(--white);
   font-size: 20px;
 }
 
@@ -113,19 +117,16 @@ body {
   padding: 14px;
 }
 .day-name {
-  color: #fff;
+  color: var(--white);
   font-size: 35px;
   font-weight: bold;
   font-family: "Stardos Stencil", cursive;
   margin-bottom: 5px;
 }
 
-.date,
-.update,
-.time,
-.info {
-  font-size: 19px;
-  color: #494949;
+.date-info {
+  font-size: 17px;
+  color: var(--main-color);
   font-family: "Roboto", sans-serif;
 }
 
@@ -138,39 +139,73 @@ body {
 }
 
 .info {
-  margin: 35px auto 0;
+  margin: 40px auto 0;
 }
 
 .current-tempreture {
-  margin-left: 35px;
-  font-size: 25px;
+  position: relative;
   font-family: "Roboto", sans-serif;
   font-weight: 600;
   text-transform: capitalize;
 }
 
+.feels-like {
+  margin-left: 10%;
+}
+
+.current-weather-status {
+  font-size: 20px;
+}
+
 .deg-celsius,
-.deg-fahrenheit {
-  font-size: 32px;
+.deg-fahrenheit,
+.devider {
+  position: absolute;
+  font-size: 18px;
   text-decoration: none;
   font-weight: bold;
-  color: #494949;
-  transition: all 0.5s ease-in-out;
+  color: var(--main-color);
+  transition: all 0.5s ease-out;
+}
+
+.deg-celsius {
+  bottom: 100px;
+  left: 90px;
+}
+.devider {
+  bottom: 108px;
+  left: 120px;
+}
+.deg-fahrenheit {
+  bottom: 104px;
+  left: 130px;
 }
 
 .current-tempreture .active {
-  color: #fff;
-  font-size: 38px;
+  color: var(--white);
+  font-size: 24px;
   cursor: default;
 }
 
 .current-weather-img {
   width: 160px;
-  margin-left: -20px;
+  animation: zoomInOut 6s linear infinite;
 }
+
+@keyframes zoomInOut {
+  0%,
+  100% {
+    transform: scale(0.85);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
 .degree {
+  margin-left: 15%;
   font-size: 54px;
-  color: #fff;
+  color: var(--white);
 }
 
 #deg-celsius:hover,
@@ -179,14 +214,14 @@ body {
 }
 
 .details {
-  font-size: 22px;
-  color: #494949;
+  font-size: 18px;
+  color: var(--main-color);
 }
 
 .humidity,
 .wind,
 .pressure {
-  border-bottom: 2px solid #b39b6e2f;
+  border-bottom: 2px solid #e9e2d52f;
 }
 
 /*   Information Row 3    */
@@ -206,12 +241,14 @@ body {
   line-height: 0.6;
   color: #ffffffc5;
   font-weight: bold;
+  font-family: "Stardos Stencil", cursive;
 }
 
 .weather-forecast-temps {
   font-size: 18px;
-  font-weight: bold;
-  color: #fff;
+  font-weight: 600;
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
 }
 
 .weather-forecast-temps:hover {
@@ -223,7 +260,7 @@ body {
 }
 
 .city-name:hover {
-  color: #fff;
+  color: var(--white);
 }
 
 .days-img {
@@ -233,7 +270,7 @@ body {
 .footer {
   text-align: center;
   margin-top: 10px;
-  color: #fff;
+  color: var(--white);
   font-family: "Roboto", sans-serif;
 }
 
@@ -247,5 +284,5 @@ body {
   color: #000;
 }
 .git-icon {
-  color: #fff;
+  color: var(--white);
 }

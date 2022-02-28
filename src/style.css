@@ -54,7 +54,7 @@ body {
 .city-name {
   display: block;
   padding: 10px 15px 0;
-  font-size: 50px;
+
   background: #f5f7f8;
   background: -webkit-repeating-linear-gradient(
     to right,
@@ -189,15 +189,15 @@ body {
 
 .deg-celsius {
   bottom: 100px;
-  left: 60px;
+  left: 75px;
 }
 .devider {
   bottom: 108px;
-  left: 90px;
+  left: 110px;
 }
 .deg-fahrenheit {
   bottom: 104px;
-  left: 100px;
+  left: 125px;
 }
 
 .current-tempreture .active {
@@ -306,4 +306,134 @@ body {
 }
 .git-icon {
   color: var(--white);
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 700px;
+  }
+  .row-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .search-btn,
+  #current-location {
+    margin-top: 10px;
+    display: inline;
+    float: right;
+  }
+  .city-name {
+    font-size: 40px;
+  }
+  .search-text {
+    width: 200px;
+    float: right;
+  }
+  .row-2 {
+    height: auto;
+  }
+  .current-weather-status {
+    margin-top: 0;
+  }
+  .current-weather-img {
+    width: 100px;
+    margin-top: 60px;
+  }
+  .current-tempreture,
+  .date-info {
+    margin-top: 30px;
+  }
+  .details,
+  .date-info {
+    padding: 0;
+    font-size: 16px;
+  }
+  .days-img {
+    width: 60px;
+  }
+  .degree {
+    font-size: 44px;
+  }
+  #deg-celsius {
+    top: 5px;
+    left: 55px;
+  }
+  #deg-fahrenheit {
+    top: 5px;
+    left: 90px;
+  }
+  .devider {
+    top: 5px;
+    left: 85px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 500px;
+  }
+  .city-name {
+    font-size: 40px;
+    margin-top: 20px;
+  }
+  .row-2 {
+    height: auto;
+    margin-top: 0;
+  }
+  .current-weather-status {
+    font-size: 16px;
+  }
+  .details,
+  .date-info {
+    padding: 5px;
+    font-size: 14px;
+  }
+  #deg-celsius,
+  #deg-fahrenheit {
+    font-size: 14px;
+  }
+  .day-name {
+    font-size: 26px;
+  }
+  .degree {
+    font-size: 34px;
+  }
+  .days-img {
+    width: 50px;
+  }
+  .weather-forecast-temps-max,
+  .weather-forecast-temps-min,
+  .weather-forecast-days {
+    font-size: 15px;
+  }
+  .footer {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 400px) {
+  .container {
+    width: 90%;
+    margin: 15px auto;
+  }
+
+  .city-name {
+    font-size: 30px;
+    padding: 10px;
+    margin-top: 60px;
+  }
+  .row-1 {
+    margin-top: 0;
+  }
+
+  .search {
+    padding: 0;
+  }
+  .date-info,
+  .details,
+  .current-weather-status {
+    font-size: 13px;
+  }
 }

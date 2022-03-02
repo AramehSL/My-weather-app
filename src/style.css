@@ -3,13 +3,20 @@
 :root {
   --gray-color: #353434;
   --white: #fff;
-  --white-alpha-40: rgba(214, 200, 200, 0.692);
+  --white-alpha-40: rgba(243, 236, 236, 0.507);
   --white-alpha-25: rgba(255, 255, 255, 0.144);
 }
 
 body {
   height: 100vh;
-  background: linear-gradient(-45deg, #cf6747, #aa6680, #1c8ab3, #23d5ab);
+  background: linear-gradient(
+    -45deg,
+    #cf6747,
+    #aa6680,
+    #1c8ab3,
+    #23d5ab,
+    #9c54c5
+  );
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 100vh;
@@ -39,22 +46,11 @@ body {
   box-shadow: 0px 0px 15px 1px rgba(204, 204, 204, 0.432);
   /* animation: glow 5s infinite alternate; */
 }
-/* 
-@keyframes glow {
-  from {
-    box-shadow: 0 0 20px -5px #c2d7df;
-  }
-  to {
-    box-shadow: 0 0 20px 5px #e0c5d0;
-  }
-} */
-
-/*  City Information Row 1*/
 
 .city-name {
   display: block;
   padding: 10px 15px 0;
-
+  font-size: 45px;
   background: #f5f7f8;
   background: -webkit-repeating-linear-gradient(
     to right,
@@ -114,7 +110,7 @@ body {
 .search-btn:hover,
 #current-location:hover {
   color: var(--white);
-  background-color: rgba(207, 204, 204, 0.685);
+  background-color: var(--white-alpha-40);
 }
 
 .search-icon {
@@ -122,7 +118,7 @@ body {
   font-size: 20px;
 }
 
-.location {
+.location-icon {
   color: var(--white);
   font-size: 20px;
 }
@@ -137,6 +133,7 @@ body {
 .date-info {
   text-align: center;
   padding: 14px;
+  line-height: 1.8;
 }
 .day-name {
   color: var(--white);
@@ -188,15 +185,15 @@ body {
 }
 
 .deg-celsius {
-  bottom: 100px;
+  bottom: 110px;
   left: 75px;
 }
 .devider {
-  bottom: 108px;
+  bottom: 118px;
   left: 110px;
 }
 .deg-fahrenheit {
-  bottom: 104px;
+  bottom: 114px;
   left: 125px;
 }
 
@@ -241,6 +238,7 @@ body {
 .wind,
 .pressure {
   border-bottom: 2px solid var(--white-alpha-40);
+  font-weight: 500;
 }
 
 /*   Information Row 3    */
@@ -367,60 +365,21 @@ body {
     top: 5px;
     left: 85px;
   }
-}
-
-@media (max-width: 600px) {
-  .container {
-    width: 500px;
-  }
-  .city-name {
-    font-size: 40px;
-    margin-top: 20px;
-  }
-  .row-2 {
-    height: auto;
-    margin-top: 0;
-  }
-  .current-weather-status {
-    font-size: 16px;
-  }
-  .details,
-  .date-info {
-    padding: 5px;
-    font-size: 14px;
-  }
-  #deg-celsius,
-  #deg-fahrenheit {
-    font-size: 14px;
-  }
-  .day-name {
-    font-size: 26px;
-  }
-  .degree {
-    font-size: 34px;
-  }
-  .days-img {
-    width: 50px;
-  }
-  .weather-forecast-temps-max,
-  .weather-forecast-temps-min,
-  .weather-forecast-days {
-    font-size: 15px;
-  }
   .footer {
     font-size: 14px;
     margin-top: 5px;
   }
 }
 
-@media only screen and (max-width: 600px) and (min-width: 380px) {
+@media only screen and (max-width: 600px) {
   .container {
     width: 90%;
     margin: 15px auto;
   }
 
   .city-name {
-    font-size: 30px;
+    word-break: break-all;
+    font-size: 36px;
     padding: 10px;
     margin-top: 60px;
   }
@@ -431,10 +390,28 @@ body {
   .search {
     padding: 0;
   }
+
+  .search-icon,
+  .location-icon {
+    color: var(--white);
+    font-size: 14px;
+  }
+  .search-btn,
+  #current-location {
+    background-color: rgba(255, 255, 255, 0.212);
+    padding: 5px 10px;
+    border-radius: 7px;
+    border-style: none;
+  }
+
   .date-info,
   .details,
   .current-weather-status {
-    font-size: 12px;
+    font-size: 10px;
+    padding: 5px;
+  }
+  .date-info {
+    line-height: 1.8;
   }
 
   .day-name {
@@ -447,8 +424,27 @@ body {
   #deg-fahrenheit {
     font-size: 12px;
   }
+
+  .feels-like {
+    font-size: 14px;
+  }
+
+  .current-tempreture {
+    margin-top: 0;
+  }
+  .search-text {
+    padding: 6px 20px;
+    border-radius: 5px;
+    border-style: none;
+    border: 2px solid rgb(205, 214, 223);
+    background: rgba(255, 255, 255, 0.1);
+  }
   .days-img {
-    width: 35px;
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 110%;
   }
   .weather-forecast-temps-max,
   .weather-forecast-temps-min,
@@ -456,11 +452,11 @@ body {
     font-size: 12px;
   }
   .current-weather-img {
-    width: 70px;
+    width: 60px;
     margin-top: 60px;
   }
   .footer {
-    font-size: 12px;
+    font-size: 10px;
     margin-top: 5px;
   }
 }
